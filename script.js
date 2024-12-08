@@ -54,22 +54,22 @@ gsap.to(".textpara span",{
     }
 })
 
-const carousel = document.getElementById('carousel');
+// const carousel = document.getElementById('carousel');
 
-    function nextSlide() {
-      carousel.scrollBy({ left: carousel.clientWidth, behavior: 'smooth' });
-    }
+//     function nextSlide() {
+//       carousel.scrollBy({ left: carousel.clientWidth, behavior: 'smooth' });
+//     }
 
-    function prevSlide() {
-      carousel.scrollBy({ left: -carousel.clientWidth, behavior: 'smooth' });
-    }
+//     function prevSlide() {
+//       carousel.scrollBy({ left: -carousel.clientWidth, behavior: 'smooth' });
+//     }
 
-    document.querySelector(".prev").addEventListener("click",() => {
-        prevSlide();
-    })
-    document.querySelector(".next").addEventListener("click",() => {
-        nextSlide();
-    })
+//     document.querySelector(".prev").addEventListener("click",() => {
+//         prevSlide();
+//     })
+//     document.querySelector(".next").addEventListener("click",() => {
+//         nextSlide();
+//     })
 
     // let isScrolling;
     // document.addEventListener("scroll", () => {
@@ -85,3 +85,39 @@ const carousel = document.getElementById('carousel');
     //     }, 300);
 
     // })
+
+
+
+    const slides = document.getElementById('slides');
+    const dots = document.querySelectorAll('.dot');
+    const totalSlides = slides.children.length;
+
+    let currentIndex = 0;
+
+    function updateCarousel(index) {
+      slides.style.transform = `translateX(-${index * 100}%)`;
+      dots.forEach((dot, idx) => {
+        dot.classList.toggle('bg-gray-900', idx === index);
+        dot.classList.toggle('bg-gray-400', idx !== index);
+      });
+    }
+
+    document.getElementById('next').addEventListener('click', () => {
+      currentIndex = (currentIndex + 1) % totalSlides;
+      updateCarousel(currentIndex);
+    });
+
+    document.getElementById('prev').addEventListener('click', () => {
+      currentIndex = (currentIndex - 1 + totalSlides) % totalSlides;
+      updateCarousel(currentIndex);
+    });
+
+    dots.forEach((dot) => {
+      dot.addEventListener('click', (e) => {
+        currentIndex = parseInt(e.target.dataset.index);
+        updateCarousel(currentIndex);
+      });
+    });
+
+    // Initialize
+    updateCarousel(currentIndex);
