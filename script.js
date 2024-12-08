@@ -71,17 +71,17 @@ const carousel = document.getElementById('carousel');
         nextSlide();
     })
 
-    let isScrolling;
-    document.addEventListener("scroll", () => {
-        const nav = document.querySelector("nav");
-        nav.style.backgroundColor = "transparent";
+    // let isScrolling;
+    // document.addEventListener("scroll", () => {
+    //     const nav = document.querySelector("nav");
+    //     nav.style.backgroundColor = "transparent";
   
-        // Clear any previously set timeout
-        clearTimeout(isScrolling);
+    //     // Clear any previously set timeout
+    //     clearTimeout(isScrolling);
   
-        // Set a timeout to change background color to black when scrolling stops
-        isScrolling = setTimeout(() => {
-          nav.style.backgroundColor = "black";
-        }, 300);
+    //     // Set a timeout to change background color to black when scrolling stops
+    //     isScrolling = setTimeout(() => {
+    //       nav.style.backgroundColor = "#eee";
+    //     }, 300);
 
-    })
+    // })
