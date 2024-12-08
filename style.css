@@ -1,0 +1,7 @@
+.video-div{
+    clip-path: circle(var(--clip) at 50% 50%);
+}
+
+#carousel::-webkit-scrollbar{
+    display: none;
+}
